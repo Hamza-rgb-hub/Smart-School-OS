@@ -1,0 +1,14 @@
+const express = require('express');
+const { getFeeStructures, createFeeStructure, updateFeeStructure, deleteFeeStructure, getFeePayments, createFeePayment, updateFeePayment, getFeeSummary } = require('../controllers/feeController');
+const { protect, authorize } = require('../middleware/auth');
+const router = express.Router();
+router.use(protect, authorize('school_admin'));
+router.get('/structures', getFeeStructures);
+router.post('/structures', createFeeStructure);
+router.put('/structures/:id', updateFeeStructure);
+router.delete('/structures/:id', deleteFeeStructure);
+router.get('/summary', getFeeSummary);
+router.get('/payments', getFeePayments);
+router.post('/payments', createFeePayment);
+router.put('/payments/:id', updateFeePayment);
+module.exports = router;

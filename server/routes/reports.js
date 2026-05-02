@@ -1,0 +1,12 @@
+const express = require('express');
+const { getReportCards, getStudentReportCard, createReportCard, updateReportCard, publishReportCard, deleteReportCard } = require('../controllers/reportController');
+const { protect, authorize } = require('../middleware/auth');
+const router = express.Router();
+router.use(protect, authorize('school_admin'));
+router.get('/', getReportCards);
+router.get('/student/:studentId', getStudentReportCard);
+router.post('/', createReportCard);
+router.put('/:id', updateReportCard);
+router.put('/:id/publish', publishReportCard);
+router.delete('/:id', deleteReportCard);
+module.exports = router;

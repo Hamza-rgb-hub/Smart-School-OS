@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: sso-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: smart-school-os
+
+  server:
+    build: ./server
+    container_name: sso-server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongodb:27017/smart-school-os
+      - JWT_SECRET=change_this_to_a_long_random_secret_in_production
+      - JWT_EXPIRE=7d
+    volumes:
+      - ./server/uploads:/app/uploads
+    depends_on:
+      - mongodb
+
+  client:
+    build: ./client
+    container_name: sso-client
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+volumes:
+  mongo_data:
