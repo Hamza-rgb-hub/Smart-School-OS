@@ -44,46 +44,8 @@ A production-ready, multi-tenant SaaS platform for school management built with 
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB (local or Atlas)
+- MongoDB (Atlas)
 
-### 1. Clone & Install
-
-```bash
-git clone <repo-url>
-cd smart-school-os
-
-# Server
-cd server
-npm install
-cp .env.example .env
-# Edit .env — set MONGODB_URI and JWT_SECRET
-
-# Client
-cd ../client
-npm install
-```
-
-### 3. Start
-
-```bash
-# Terminal 1 — Server (port 5000)
-cd server && npm run dev
-
-# Terminal 2 — Client (port 3000)
-cd client && npm start
-```
----
-
-## 🐳 Docker (Recommended for Production)
-
-```bash
-# From project root
-docker-compose up --build
-```
-
-
-
----
 
 ## 📁 Project Structure
 
@@ -190,19 +152,6 @@ smart-school-os/
 
 ---
 
-## 🔒 Environment Variables
-
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/smart-school-os
-JWT_SECRET=your_very_long_random_secret_here
-JWT_EXPIRE=7d
-NODE_ENV=development
-MAX_FILE_SIZE=5242880
-CLIENT_URL=http://localhost:3000
-```
-
----
 
 ## 🗺️ School Registration Flow
 
