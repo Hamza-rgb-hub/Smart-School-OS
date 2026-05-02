@@ -1,7 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_URL = 'https://smart-school-os.onrender.com';
+const API_URL = 'https://smart-school-os.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
