@@ -55,7 +55,8 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // CORS
 app.use(cors({
   origin: process.env.CLIENT_URL,
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 // Logging in development
